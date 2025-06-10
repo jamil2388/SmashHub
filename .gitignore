@@ -1,0 +1,56 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Pycharm
+.idea/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+.env
+db.sqlite3
+media/
+staticfiles/
+
+# Backend (Django specific)
+backend/__pycache__/
+backend/**/*.pyc
+backend/**/migrations/
+backend/.env
+backend/local_settings.py
+
+# PostgreSQL Docker volume (if mounted locally)
+postgres_data/
+
+# Frontend (future: React/Vue/etc.)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.next/
+frontend/.nuxt/
+
+# Docker
+*.pid
+*.pid.lock
+*.log
+*.sock
+Dockerfile
+docker-compose.override.yml
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# System
+Thumbs.db
+ehthumbs.db
+Desktop.ini
