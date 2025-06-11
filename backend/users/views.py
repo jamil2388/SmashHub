@@ -2,6 +2,10 @@ from rest_framework import generics
 from .serializers import PlayerSignupSerializer, ClubSignupSerializer
 from .models import CustomUser
 
+# added for profile view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 # added for logout view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,6 +20,23 @@ class PlayerSignupView(generics.CreateAPIView):
 class ClubSignupView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = ClubSignupSerializer
+
+# return the profile view for users
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def home_view(request):
+    user = request.user
+
+    # You can extend this to return PlayerProfile or Club info too
+    user_data = {
+        "id": user.id, # experimental
+        "username": user.username,
+        "email": user.email,
+        "role": user.role,
+    }
+
+    return Response(user_data)
+
 
 class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
